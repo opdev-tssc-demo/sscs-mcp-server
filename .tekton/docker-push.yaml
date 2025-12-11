@@ -1,27 +1,27 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
-  name: "sscs-mcp-server-svc-on-push"
+  name: "sscs-mcp-server-on-push"
   annotations:
     pipelinesascode.tekton.dev/on-event: "[push]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/max-keep-runs: "2"
-    pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/opdev-tssc-demo/sscs-mcp-server-src/refs/heads/main/.tekton/docker-build-rhtap.yaml"
+    pipelinesascode.tekton.dev/pipeline: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/pipelines/docker-build-rhtap.yaml"
     pipelinesascode.tekton.dev/task-0: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/init.yaml"
     pipelinesascode.tekton.dev/task-1: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/git-clone.yaml"
     pipelinesascode.tekton.dev/task-2: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/buildah-rhtap.yaml"
     pipelinesascode.tekton.dev/task-3: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/acs-image-check.yaml"
-    pipelinesascode.tekton.dev/task-4: "https://raw.githubusercontent.com/opdev-tssc-demo/sscs-mcp-server-src/refs/heads/main/.tekton/acs-image-scan.yaml"
+    pipelinesascode.tekton.dev/task-4: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/acs-image-scan.yaml"
     pipelinesascode.tekton.dev/task-5: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/acs-deploy-check.yaml"
-    pipelinesascode.tekton.dev/task-6: "https://raw.githubusercontent.com/opdev-tssc-demo/sscs-mcp-server-src/refs/heads/main/.tekton/update-deployment.yaml"
+    pipelinesascode.tekton.dev/task-6: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/update-deployment.yaml"
     pipelinesascode.tekton.dev/task-7: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/show-sbom-rhdh.yaml"
     pipelinesascode.tekton.dev/task-8: "https://raw.githubusercontent.com/redhat-appstudio/tssc-sample-pipelines/release-v1.7.x/pac/tasks/summary.yaml"
   labels:
-    argocd/app-name: sscs-mcp-server-svc
-    janus-idp.io/tekton: sscs-mcp-server-svc
-    backstage.io/kubernetes-id: sscs-mcp-server-svc
+    argocd/app-name: sscs-mcp-server
+    janus-idp.io/tekton: sscs-mcp-server
+    backstage.io/kubernetes-id: sscs-mcp-server
     backstage.io/kubernetes-namespace: tssc-app
-    app.kubernetes.io/part-of: sscs-mcp-server-svc
+    app.kubernetes.io/part-of: sscs-mcp-server
 spec:
   params:
     - name: dockerfile
