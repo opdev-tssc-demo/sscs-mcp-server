@@ -8,6 +8,7 @@ from mcp.server.fastmcp import FastMCP
 from starlette.requests import Request
 from starlette.responses import PlainTextResponse
 
+
 def is_running_in_kubernetes() -> str:
     """
     Checks if the application is running inside a Kubernetes pod
